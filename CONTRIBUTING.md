@@ -65,12 +65,16 @@ Preserve [SECURITY.md](SECURITY.md), [CLEAN_ROOM.md](CLEAN_ROOM.md),
 and [PRE_PUBLISH_SECURITY_REVIEW.md](PRE_PUBLISH_SECURITY_REVIEW.md)
 unless you are making a factual link correction.
 
+User-facing packaging notes belong in [CHANGELOG.md](CHANGELOG.md).
+Do not describe this repository as a fork.
+
 ## Pull requests
 
 - One focused change set
 - Describe the educational purpose; do not claim live performance
 - Never include `.env` files, key material, or generated caches
 - New docs must resolve with `python scripts/quality/check.py links`
+- Mention changelog updates when the public lab snapshot changes
 
 Security reporting: [SECURITY.md](SECURITY.md).
 Disclaimer: [DISCLAIMER.md](DISCLAIMER.md).

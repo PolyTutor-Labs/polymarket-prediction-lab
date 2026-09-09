@@ -1,0 +1,20 @@
+PolyTutor Prediction Market Lab
+https://github.com/PolyTutor-Labs/polymarket-prediction-lab
+
+This repository is an independent PolyTutor Labs clean-room educational
+rebuild. It is not a fork, sanitized fork, or continuation of any
+rejected malicious upstream.
+
+Original educational source in this tree — offline demo markets,
+order-book analytics, labeled research observations, paper simulation,
+and the stdlib CLI — was written for this laboratory.
+
+PolyTutor Labs packaging contributions (security review and scanning,
+quality gates, educational documentation, and public-release metadata)
+are part of the same MIT-licensed tree.
+
+PolyTutor Labs does not claim affiliation with Polymarket.
+
+See LICENSE for the full license text.
+See CLEAN_ROOM.md for provenance claims.
+See README.md Attribution and DISCLAIMER.md.

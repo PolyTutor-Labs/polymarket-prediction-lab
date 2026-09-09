@@ -21,6 +21,7 @@ rejected malicious upstream. Provenance: [CLEAN_ROOM.md](../CLEAN_ROOM.md).
 8. [Risk and limitations](risk-and-limitations.md) — caps and gaps
 9. [Learning path](learning-path.md) — staged study order (no live stage)
 10. [Security](../SECURITY.md) · [Disclaimer](../DISCLAIMER.md) · [Contributing](../CONTRIBUTING.md)
+11. [Changelog](../CHANGELOG.md) · [License](../LICENSE) · [Notice](../NOTICE)
 
 ## Repository map
 

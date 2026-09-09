@@ -2,8 +2,8 @@
 
 **Educational, offline, paper-only prediction-market learning environment.**
 
-Public lab version: **v0.1.0**. That version is a packaging snapshot, not a
-performance claim.
+Public lab version: **v0.1.0** — [`CHANGELOG.md`](CHANGELOG.md). That
+version is a packaging snapshot, not a performance claim.
 
 ```
 Prediction-market education
@@ -37,7 +37,8 @@ PolyTutor work on this repository includes:
 - clean-room pre-publish security review
 - security hardening and secret scanning
 - test and quality-gate stabilization
-- educational documentation (this Task 10 layer)
+- educational documentation
+- public-release packaging (changelog, notice, metadata)
 
 The lab is **not affiliated with Polymarket**. It does not call live
 exchange APIs and does not place orders.
@@ -129,6 +130,8 @@ Details: [docs/architecture.md](docs/architecture.md).
 polymarket-prediction-lab/
 ├── README.md
 ├── LICENSE
+├── NOTICE
+├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── DISCLAIMER.md
 ├── SECURITY.md
@@ -224,6 +227,8 @@ deploy or trade.
 | [PRE_PUBLISH_SECURITY_REVIEW.md](PRE_PUBLISH_SECURITY_REVIEW.md) | Historical pre-publish review |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | What contributions are accepted |
 | [DISCLAIMER.md](DISCLAIMER.md) | Educational-use disclaimer |
+| [CHANGELOG.md](CHANGELOG.md) | Public lab snapshot notes (v0.1.0) |
+| [NOTICE](NOTICE) | Clean-room attribution |
 
 ## Risks and Limitations
 
@@ -269,10 +274,12 @@ real orders or connects to live exchange APIs for trading.
 **Independent clean-room.** Original educational code in this repository
 was written for PolyTutor Phase 1 #7. It is **not** derived from
 rejected malicious trees, production trading bots, or sanitized forks of
-those trees. Provenance claims are recorded in [CLEAN_ROOM.md](CLEAN_ROOM.md).
+those trees. Provenance claims are recorded in [CLEAN_ROOM.md](CLEAN_ROOM.md)
+and [NOTICE](NOTICE).
 
 PolyTutor Labs does not claim affiliation with Polymarket.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Attribution notes: [NOTICE](NOTICE).
+Public snapshot notes: [CHANGELOG.md](CHANGELOG.md).
