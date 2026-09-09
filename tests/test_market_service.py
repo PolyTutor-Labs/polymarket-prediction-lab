@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from polytutor_prediction.demo_data import DEMO_MARKETS
 from polytutor_prediction.market_service import MarketService, default_service
 
 
@@ -19,3 +20,10 @@ def test_categories():
     cats = svc.categories()
     assert isinstance(cats, list)
     assert len(cats) >= 1
+    assert cats == sorted(cats)
+
+
+def test_default_service_uses_demo_snapshot():
+    svc = default_service()
+    assert svc.count() == len(DEMO_MARKETS)
+    assert [m.market_id for m in svc.list_markets()] == [m.market_id for m in DEMO_MARKETS]

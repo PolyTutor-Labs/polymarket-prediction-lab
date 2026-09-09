@@ -16,7 +16,6 @@ Exit 0 = PASS. Exit 1 = FAIL.
 from __future__ import annotations
 
 import re
-import sys
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path

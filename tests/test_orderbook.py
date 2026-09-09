@@ -14,8 +14,24 @@ def test_quote_spread_midpoint():
     q = ob.quote(book)
     assert q.best_bid == 0.40
     assert q.best_ask == 0.50
+    assert q.bid_size == 10
+    assert q.ask_size == 8
     assert abs(ob.spread(book) - 0.10) < 1e-9
     assert ob.midpoint(book) == 0.45
+
+
+def test_empty_book_has_no_quote_metrics():
+    book = OrderBook(outcome=OutcomeLabel.YES)
+    assert ob.best_bid(book) is None
+    assert ob.best_ask(book) is None
+    q = ob.quote(book)
+    assert q.best_bid is None and q.best_ask is None
+    assert q.bid_size == 0.0 and q.ask_size == 0.0
+    assert ob.spread(book) is None
+    assert ob.midpoint(book) is None
+    assert ob.imbalance(book) is None
+    assert ob.vwap_buy(book, 1) is None
+    assert ob.vwap_sell(book, 1) is None
 
 
 def test_depth_and_imbalance():
@@ -46,6 +62,18 @@ def test_vwap_buy_sell():
     sell = ob.vwap_sell(book, 12)
     assert sell is not None
     assert sell[1] == 12
+
+
+def test_vwap_rejects_non_positive_size():
+    book = OrderBook(
+        outcome=OutcomeLabel.YES,
+        bids=[OrderBookLevel(0.40, 10)],
+        asks=[OrderBookLevel(0.50, 10)],
+    )
+    assert ob.vwap_buy(book, 0) is None
+    assert ob.vwap_buy(book, -1) is None
+    assert ob.vwap_sell(book, 0) is None
+    assert ob.vwap_sell(book, -1) is None
 
 
 def test_demo_markets_have_books():
