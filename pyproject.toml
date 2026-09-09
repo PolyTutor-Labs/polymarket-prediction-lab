@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polytutor-prediction"
+version = "0.1.0"
+description = "Clean-room educational Polymarket-style prediction market lab (demo/paper only)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+  { name = "PolyTutor Labs (educational)" },
+]
+keywords = ["education", "prediction-market", "paper-trading", "order-book"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Education",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Education",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.3.5",
+]
+# Optional richer TUI — not required; stdlib CLI is the default.
+textual = [
+  "textual==1.0.0",
+]
+
+[project.scripts]
+polytutor-prediction = "polytutor_prediction.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.polytutor]
+mode_default = "demo"
+initial_cash_default = 10000
+live_trading = false
