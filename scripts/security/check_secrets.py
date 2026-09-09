@@ -52,8 +52,15 @@ SKIP_DIR_NAMES = {
     ".ruff_cache",
     "dist",
     "build",
-    "*.egg-info",
 }
+
+def _should_skip_dir(parts: tuple[str, ...]) -> bool:
+    for part in parts:
+        if part in SKIP_DIR_NAMES:
+            return True
+        if part.endswith(".egg-info"):
+            return True
+    return False
 
 TEXT_SUFFIXES = {
     ".py",
@@ -84,7 +91,7 @@ def iter_files():
     for p in ROOT.rglob("*"):
         if not p.is_file():
             continue
-        if any(part in SKIP_DIR_NAMES for part in p.parts):
+        if _should_skip_dir(p.parts):
             continue
         if p.suffix.lower() not in TEXT_SUFFIXES and p.name not in {
             "LICENSE",
