@@ -7,6 +7,7 @@ and in SECURITY.md / CLEAN_ROOM.md are allowed.
 
 from __future__ import annotations
 
+import importlib.util
 import os
 import re
 from pathlib import Path
@@ -127,8 +128,6 @@ def test_default_mode_is_demo():
 
 def test_check_secrets_script_passes():
     # Import and run scanner in-process (no subprocess).
-    import importlib.util
-
     path = ROOT / "scripts" / "security" / "check_secrets.py"
     spec = importlib.util.spec_from_file_location("check_secrets", path)
     assert spec and spec.loader
