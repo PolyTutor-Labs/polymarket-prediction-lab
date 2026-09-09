@@ -52,9 +52,34 @@ intentional and required for regression testing.
 python scripts/security/check_secrets.py
 ```
 
-Must exit 0 (PASS). The scanner flags private-key-like blobs, mnemonic phrases,
-live API secret env names, and known dangerous runtime indicators outside
-allowlisted documentation/test files.
+Must exit 0 (PASS). The scanner has **two independent detectors**:
+
+1. **Secrets** (every text file, including security docs): PEM headers, common
+   token shapes, and non-placeholder secret assignments. Reports path / line /
+   rule id only — **never prints values**.
+2. **Dangerous runtime indicators** (executable Python under `src/` and
+   `scripts/`): Windows stealth APIs, reflective PE, download-and-run, remote
+   `eval`/`exec`, mnemonic / live secret *names* used as capabilities.
+
+A **narrow** allowlist (`SECURITY.md`, `CLEAN_ROOM.md`, `README.md`,
+`DISCLAIMER.md`, `PRE_PUBLISH_SECURITY_REVIEW.md`, security tests, and the
+scanner itself) may mention prohibited *names* when asserting absence. Other
+Markdown is still scanned; prohibition/audit sentences are excluded by nearby
+context. `docs/` is **not** skipped as a tree.
+
+`.env.example` may only define `POLYTUTOR_MODE` and `POLYTUTOR_INITIAL_CASH`.
+
+## Dependencies
+
+Runtime `dependencies` in `pyproject.toml` are **empty**. Dev extra pins
+`pytest==8.3.5`. Optional `textual` is not required for the stdlib CLI.
+No web3 / HTTP / CLOB / wallet SDKs. Task 8 does not broadly upgrade packages.
+
+## CI / security readiness
+
+GitHub Actions (when present) must use `permissions: contents: read`, pin
+actions by commit SHA, and run `python scripts/security/check_secrets.py`.
+This lab has no deploy workflow and must not grow `contents: write`.
 
 ## Reporting
 

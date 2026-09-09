@@ -43,6 +43,7 @@ python scripts/security/check_secrets.py
 - No wallet fields in models or CLI
 - `.env.example` may only contain `POLYTUTOR_MODE` and `POLYTUTOR_INITIAL_CASH`
 - Prefer zero `subprocess`; no download-and-run, no remote `eval`/`exec`
+- Secret scanner separates credential values from dangerous-runtime *names*
 - See [SECURITY.md](SECURITY.md) and [CLEAN_ROOM.md](CLEAN_ROOM.md)
 
 ## Package layout

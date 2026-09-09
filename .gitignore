@@ -34,9 +34,21 @@ Thumbs.db
 
 # Secrets / local env (never commit real secrets)
 .env
-.env.local
+.env.*
+!.env.example
 *.pem
 *.key
+*.p12
+*.pfx
+*.secret
+*.wallet
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+credentials.json
+secrets.json
+wallet.json
 
 # Runtime artifacts
 *.log
