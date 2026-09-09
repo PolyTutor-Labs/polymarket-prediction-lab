@@ -21,7 +21,9 @@ Or run tests:
 
 ```bash
 pytest
+ruff check src tests scripts
 python scripts/security/check_secrets.py
+python scripts/quality/check.py
 ```
 
 ## What you learn

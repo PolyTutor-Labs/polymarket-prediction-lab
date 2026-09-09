@@ -27,6 +27,7 @@ dependencies = []
 [project.optional-dependencies]
 dev = [
   "pytest==8.3.5",
+  "ruff==0.11.13",
 ]
 # Optional richer TUI — not required; stdlib CLI is the default.
 textual = [
@@ -42,7 +43,45 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
 addopts = "-q"
+# Defense in depth: never collect src, scripts, docs, or caches as tests.
+norecursedirs = [
+  ".git",
+  ".venv",
+  "venv",
+  "__pycache__",
+  ".pytest_cache",
+  ".mypy_cache",
+  ".ruff_cache",
+  "src",
+  "scripts",
+  "docs",
+  "build",
+  "dist",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests", "scripts"]
+exclude = [
+  ".git",
+  ".venv",
+  "venv",
+  "__pycache__",
+  ".pytest_cache",
+  ".mypy_cache",
+  ".ruff_cache",
+  "build",
+  "dist",
+]
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501"]
 
 [tool.polytutor]
 mode_default = "demo"

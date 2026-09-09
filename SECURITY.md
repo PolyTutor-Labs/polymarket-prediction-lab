@@ -81,6 +81,10 @@ GitHub Actions (when present) must use `permissions: contents: read`, pin
 actions by commit SHA, and run `python scripts/security/check_secrets.py`.
 This lab has no deploy workflow and must not grow `contents: write`.
 
+`security.yml` remains the dedicated secrets workflow. A separate `quality.yml`
+may run compileall, ruff, pytest, and this same scanner. Quality CI must not
+introduce secrets, write permissions, network jobs, or live/CLOB execution.
+
 ## Reporting
 
 If you find a security issue in this educational lab, do not open a public issue
