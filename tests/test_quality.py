@@ -164,6 +164,8 @@ def test_provenance_and_security_docs_remain() -> None:
         "DISCLAIMER.md",
         "PRE_PUBLISH_SECURITY_REVIEW.md",
         "LICENSE",
+        "NOTICE",
+        "CHANGELOG.md",
         "README.md",
     ):
         assert (ROOT / name).is_file(), name
